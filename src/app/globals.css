@@ -1,26 +1,46 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-brand-yellow: #FFE01B;
+  --color-brand-black: #241c15;
+  --color-brand-dark-gray: #403b3b;
+  --color-stone-50: #fafaf9;
+  --color-stone-100: #f6f6f4;
+  --color-stone-200: #e8e8e6;
+  --color-teal-accent: #007C89;
+
+  --shadow-soft: 0 2px 12px rgba(0,0,0,0.04);
+  --shadow-card: 0 0 0 1px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.04);
+
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Merriweather", serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Custom Utilities */
+.hero-pattern {
+  background-image: radial-gradient(#e8e8e6 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base Styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  color: var(--color-brand-black);
+  background-color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+@utility btn-primary {
+  @apply bg-brand-yellow hover:bg-[#ebd019] text-brand-black px-8 py-4 font-bold rounded-sm transition-all border border-brand-black shadow-[4px_4px_0px_0px_rgba(36,28,21,1)];
+}
+
+@utility btn-outline {
+  @apply border border-brand-black px-8 py-4 font-bold rounded-sm hover:bg-stone-100 transition-all;
+}
+
+@utility pricing-card {
+  @apply bg-white border border-stone-200 p-8 flex flex-col transition-transform hover:-translate-y-1;
 }
